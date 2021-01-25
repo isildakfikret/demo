@@ -11,7 +11,7 @@ jobs:
         os: [ubuntu-latest, windows-latest, macOS-latest]
 
     env:
-      OS: ${{ maxrix.os }}
+      OS: ${{ matrix.os }}
       NODE: ${{ matrix.node }}
 
     steps:
