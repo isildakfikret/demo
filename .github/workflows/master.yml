@@ -25,10 +25,11 @@ jobs:
       - name: Lint
         run: npm run lint
 
-      - name: Test and Coverage
-        run: |
-          npm test --ci --coverage --maxWorkers=2
-          bash <(curl -s https://codecov.io/bash) -t ${{ secrets.CODECOV_TOKEN }}
+      - name: Test and upload coverage to CodeCov
+        uses: codecov/codecov-action@v1
+        run: npm test --ci --coverage --maxWorkers=2
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
 
       - name: Build
         run: npm run build
