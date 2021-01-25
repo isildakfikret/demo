@@ -10,6 +10,10 @@ jobs:
         node: ['10.x', '12.x', '14.x']
         os: [ubuntu-latest, windows-latest, macOS-latest]
 
+    env:
+      OS: ${{ maxrix.os }}
+      NODE: ${{ matrix.node }}
+
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
@@ -25,11 +29,15 @@ jobs:
       - name: Lint
         run: npm run lint
 
-      - name: Test and upload coverage to CodeCov
-        uses: codecov/codecov-action@v1
+      - name: Test
         run: npm test --ci --coverage --maxWorkers=2
+
+      - name: Upload coveraget to CodeCov
+        uses: codecov/codecov-action@v1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
+          env_vars: OS,NODE
+          directory: ./coverage
 
       - name: Build
         run: npm run build
