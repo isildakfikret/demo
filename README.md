@@ -57,3 +57,9 @@
 ### Github releases (included pre-releases)
 
 ![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/isildakfikret/demo?include_prereleases)
+
+### CodeCov
+
+![Codecov](https://img.shields.io/codecov/c/github/isildakfikret/demo)
+
+###
